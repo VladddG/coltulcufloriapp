@@ -4,10 +4,10 @@ import { useHeroLogic } from './HeroLogic';
 import Menu from '../Menu/Menu'; 
 
 const styles = {
-  // Optimizat cu dvh (Dynamic Viewport Height) pentru a preveni bug-urile de scroll pe mobile browser și GPU acceleration
   section: "relative w-full h-[100dvh] bg-[#050505] overflow-hidden transform-gpu",
   
-  marqueeLayer: "absolute inset-0 flex flex-col justify-center gap-[25dvh] z-0 pointer-events-none opacity-0 overflow-hidden transform-gpu",
+  // AICI am micșorat distanța dintre rânduri (de la gap-[25dvh] la gap-6 pe mobil și gap-12 pe desktop)
+  marqueeLayer: "absolute inset-0 flex flex-col justify-center gap-6 md:gap-12 z-0 pointer-events-none opacity-0 overflow-hidden transform-gpu",
   marqueeLine: "flex whitespace-nowrap font-serif text-[clamp(4rem,7vw,7rem)] font-black text-white uppercase tracking-[2px] transform-gpu",
   
   centerImage: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] md:w-[35vw] h-[80dvh] md:h-[85dvh] rounded-[16px] z-10 object-cover shadow-[0_30px_60px_rgba(0,0,0,0.5)] grayscale-[10%] opacity-0 transform-gpu",
@@ -17,15 +17,12 @@ const styles = {
   
   signatureLayer: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col items-center justify-center text-center pointer-events-none opacity-0 scale-95 will-change-[opacity,transform] transform-gpu",
   
-  // Harta scalată mai bine pentru mobil, cu spațieri adaptate
   mapWidget: "absolute bottom-6 left-4 md:bottom-10 md:left-10 z-50 flex flex-col gap-3 md:gap-4 scale-[0.80] md:scale-100 origin-bottom-left will-change-[opacity,transform] transform-gpu", 
   
-  // Header optimizat cu padding mai mic pe mobil pentru a nu se lovi elementele
   header: "fixed top-0 left-0 w-full p-4 md:p-12 flex justify-between items-start z-[9000] pointer-events-none transform-gpu",
   headerLogo: "font-serif text-[clamp(1.1rem,4vw,2.5rem)] text-[#111] font-bold tracking-tighter leading-none pointer-events-auto origin-top-left will-change-transform cursor-pointer hover:opacity-60 transition-opacity",
   headerControls: "flex gap-2 md:gap-4 pointer-events-auto origin-top-right will-change-transform",
   
-  // Butoane optimizate masiv pentru ecrane înalte/mobile (px-4 py-3 și font micșorat pe mobil)
   btnStore: "bg-[#111] text-white px-5 py-3 md:px-12 md:py-6 rounded-sm uppercase font-black tracking-[2px] md:tracking-[4px] text-[10px] md:text-base hover:bg-[#f48fb1] hover:text-[#111] transition-all cursor-pointer shadow-lg",
   btnMenu: "bg-white/80 backdrop-blur-md border border-black/10 text-[#111] p-2.5 md:px-6 md:py-6 rounded-sm hover:bg-[#f48fb1] hover:border-transparent hover:text-white transition-all cursor-pointer flex items-center justify-center shadow-lg",
 };
@@ -69,7 +66,6 @@ export default function Hero() {
         <div id="headerBtns" className={styles.headerControls}>
           <div className={styles.btnStore}>Magazin</div>
           <div className={styles.btnMenu} onClick={() => state.setIsMenuOpen(true)}>
-            {/* Iconiță meniu micșorată proporțional pentru mobil */}
             <svg className="w-5 h-5 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" /></svg>
           </div>
         </div>
@@ -115,10 +111,10 @@ export default function Hero() {
         </div>
 
         <div ref={refs.signatureRef} className={styles.signatureLayer}>
-          <h2 className="font-serif text-[clamp(2.5rem,4vw,3.5rem)] font-bold text-white tracking-[0.5em] pl-[0.5em] drop-shadow-md text-center">
+          <h2 className="font-serif text-[clamp(2.2rem,4vw,3.5rem)] font-bold text-white tracking-[0.5em] pl-[0.5em] drop-shadow-md text-center">
             COLȚUL
           </h2>
-          <span className="text-[#f48fb1] text-[clamp(5.5rem,10vw,8.5rem)] leading-[0.5] block text-center drop-shadow-md" style={{ fontFamily: "'Caliway', cursive" }}>
+          <span className="text-[#f48fb1] text-[clamp(3.8rem,14vw,8.5rem)] leading-[0.7] md:leading-[0.5] block text-center drop-shadow-md whitespace-nowrap mt-1 md:-mt-2" style={{ fontFamily: "'Caliway', cursive" }}>
             cu flori
           </span>
         </div>
