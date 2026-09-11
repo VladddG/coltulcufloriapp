@@ -107,7 +107,8 @@ export default function Preloader() {
         <h2 className="font-serif text-[clamp(1.8rem,4vw,3rem)] font-bold text-[#111] tracking-[0.3em] pl-[0.3em] uppercase text-center">
           Colțul
         </h2>
-        <span className="text-[#f48fb1] text-[clamp(3rem,12vw,5rem)] leading-[0.8] md:leading-[0.5] whitespace-nowrap -mt-2 md:-mt-4 text-center" style={{ fontFamily: "'Caliway', cursive" }}>
+        {/* AICI: Am scos marginea negativă pe mobil (mt-2) ca să nu se încalece pe ecranele înalte S25 Ultra */}
+        <span className="text-[#f48fb1] text-[clamp(3rem,12vw,5rem)] leading-[0.8] md:leading-[0.5] whitespace-nowrap mt-2 md:-mt-4 text-center" style={{ fontFamily: "'Caliway', cursive" }}>
           cu flori
         </span>
 
